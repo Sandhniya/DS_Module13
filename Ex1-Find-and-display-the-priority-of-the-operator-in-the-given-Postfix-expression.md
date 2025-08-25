@@ -37,7 +37,6 @@ Program to find and display the priority of the operator in the given Postfix ex
 #include <stdio.h>
 #include<string.h>
 
- /* Hint:
  int priority(char x)
 {
   int result;
@@ -45,7 +44,7 @@ Program to find and display the priority of the operator in the given Postfix ex
         result=1;
         
         return result;
-} Hint */
+} 
 
 int main()
 {
