@@ -1,8 +1,7 @@
 # EX 1 Display operator precedence in the infix expression.
 ## DATE:25.08.05
 ## AIM:
-To write a C program to find and display the priority of the operator in the given Postfix expression
-
+To write a JAVA program To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
 ## Algorithm
 1.Start the program.
 
@@ -33,39 +32,29 @@ To write a C program to find and display the priority of the operator in the giv
 ```
 /*
 Program to find and display the priority of the operator in the given Postfix expression
+import java.util.*;
 
-#include <stdio.h>
-#include<string.h>
+public class Main {
+    static int getMin(int[] arr, int i, int n) {
+        if (i == n - 1) {
+            return arr[i];
+        }
 
- int priority(char x)
-{
-  int result;
-    if(x == '&' || x == '|')
-        result=1;
-        
-        return result;
-} 
-
-int main()
-{
-   char ch[100]="100 200 + 2 / 5 * 7 |";
-   for(int i=0;ch[i]!='\0';i++)
-   {
-       if(strchr("+-*/^%&|",ch[i]))
-       {
-           printf("%c  ----> ",ch[i]);
-           switch(priority(ch[i]))
-           {
-               case 4:printf("Highest Priority\n");break;
-               case 3: printf("Second Highest Priority\n");break;
-               case 2: printf("Second Lowest Priority\n");break;
-               case 1:printf("Lowest Priority\n");break;
-           }
-       }
-   }
     
-    return 0;
-   
+        int minRest = getMin(arr, i + 1, n);
+       
+        return Math.min(arr[i], minRest);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        System.out.println(getMin(arr, 0, n));
+    }
 }
    
 Developed by: SANDHIYA SREE B
@@ -75,7 +64,8 @@ RegisterNumber:  212223220093
 
 ## Output:
 
-<img width="1126" height="306" alt="image" src="https://github.com/user-attachments/assets/b671a1f1-46a1-408f-8acc-929c653391fe" />
+<img width="641" height="296" alt="image" src="https://github.com/user-attachments/assets/939b96d1-f704-4d36-945f-ead6d622f433" />
+
 
 
 ## Result:
