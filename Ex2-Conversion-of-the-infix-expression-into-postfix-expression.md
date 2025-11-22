@@ -1,118 +1,70 @@
 # Ex2 Conversion of the infix expression into postfix expression
 ## DATE:25.08.25
 ## AIM:
-To write a C program to convert the infix expression into postfix form using stack by following the operator precedence and associative rule.
+To write a Java program to Count how many times a number appears in an array recursively.
 
 ## Algorithm
-1.Start and read the infix expression.
+1.Read the size of the array and its elements.
 
-2.Create an empty stack (for operators) and an empty postfix string.
+2.Read the target number to be counted.
 
-3.Scan the infix expression left to right:
+3.Call the recursive function countOccurrences(arr, n, target).
 
-4.If operand → add to postfix.
+4.In recursion: if size becomes 0, return 0; otherwise check the last element and add 1 if it matches the target.
 
-5.If operator → pop higher/equal precedence operators from stack to postfix, then push current operator.
-
-6.If ( → push to stack.
-
-7.If ) → pop from stack to postfix until ( is found.
-
-8.After scanning, pop all remaining operators from stack to postfix.
-
-9.Display the postfix expression.
-
-10.End. 
+5.Display the final count returned by the recursive function.
 
 ## Program:
 ```
 /*
-Program to convert the infix expression into postfix expression
-#include<stdio.h>
-#include<ctype.h>
+import java.util.Scanner;
 
-char stack[100];
-int top = -1;
+public class CountOccurrences {
 
-void push(char x)
-{
-  
-   stack[++top] = x;
-}
+    // Recursive function to count occurrences of a target number
+    public static int countOccurrences(int[] arr, int n, int target) {
+        //write your code here
+        if (n == 0) {
+            return 0;
+        }
 
-char pop()
-{
-   
-    if(top==-1) {
-        return -1;
+        // Check the last element and add 1 if it matches the target
+        if (arr[n - 1] == target) {
+            return 1 + countOccurrences(arr, n - 1, target);
+        } else {
+            return countOccurrences(arr, n - 1, target);
+        }
     }
-    else 
-      return stack[top--]; 
-}
-int priority(char x)
-{
-    
-    
-  
-       if(x=='(')
-         return 0;
-        else if(x=='&' || x=='|')
-          return 4;
-        else if(x=='+' || x=='-')
-          return 2;
-        else if(x=='*' || x=='/' || x=='%')
-          return 5;
-        else if(x=='^')
-          return 9;
-        
-        return 0;
-       
-   }
-    
 
-char IntoPost(char *exp)
-{
-  
-    char *e,x;
-    e = exp;
-    while(*e!='\0') {
-        if (isalnum(*e)) {
-            printf("%c ",*e);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input: Size of array
+        int size = scanner.nextInt();
+
+        if (size <= 0) {
+            System.out.println("Invalid array size. Must be positive.");
+            return;
         }
-        else if(*e=='(') {
-            push(*e);
+
+        // Input: Array elements
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = scanner.nextInt();
         }
-        else if(*e==')') {
-            while((x=pop())!='(') {
-                printf("%c ",x);
-            }
-        }
-        else {
-            while(priority(stack[top])>=priority(*e)) {
-                printf("%c ",pop());
-            }
-            push(*e);
-        }
-        e++;
+
+        // Input: Target number to count
+        int target = scanner.nextInt();
+
+        // Compute and display result
+        int count = countOccurrences(arr, size, target);
+        System.out.println("The number " + target + " appears " + count + " time(s) in the array.");
+
+        scanner.close();
     }
-    
-    while(top != -1)
-    {
-        printf("%c ",pop());
-      
-    }
-    return 0;
-
-    
 }
 
 
-int main()
-{
-    char str[100] = "4*(2+5)*9" ;
-    IntoPost(str);
-    return 1;
-}
 
 Developed by: SANDHIYA SREE B
 RegisterNumber:  212223220093
@@ -121,8 +73,8 @@ RegisterNumber:  212223220093
 
 ## Output:
 
-<img width="1160" height="235" alt="image" src="https://github.com/user-attachments/assets/59840ed2-8c23-48b4-8184-e835ee3c8d8e" />
+<img width="1001" height="632" alt="image" src="https://github.com/user-attachments/assets/2a855062-f7be-4416-bde5-0a16c8f458b5" />
 
 
 ## Result:
-Thus, the C program to convert the infix expression into postfix form using stack by following the operator precedence and associative rule is implemented successfully.
+Thus, the  program to convert the infix expression into postfix form using stack by following the operator precedence and associative rule is implemented successfully.
