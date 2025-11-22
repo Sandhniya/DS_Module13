@@ -1,72 +1,74 @@
 # Ex4 Evaluation of prefix expression
 ## DATE:25.08.05
 ## AIM:
-To write a C function to evaluate the given prefix expression using stack and print the output of the given prefix expression from the stack inside the function . 
-
+To write a java function to evaluate weather the given Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension and find the nature of resultant matrrix.
 ## Algorithm
-1.Read prefix expression.
+1.Start the program.
 
-2.Create empty stack.
+2.Read the dimensions of both matrices (rows and columns). Check whether Matrix A and Matrix B have the same dimensions. If not, display “Matrices are not of same dimension” and stop.
 
-3.Scan from right to left:
+3.Read Matrix A and check each element: If every element is odd, continue.
 
-4.Operand → push.
+4.If any element is even, mark A as invalid and stop further checking.
 
-5.Operator → pop two, apply, push result.
+5.Read Matrix A and check each element: If every element is odd, continue.
 
-6.Final stack top = result.
+6.If any element is even, mark A as invalid and stop further checking.
 
-7.Print result. 
+7.If both matrices are valid, compute the resultant matrix (e.g., A + B or any operation specified). Determine the nature of the resultant matrix:
+
+8.If all elements are odd, print “Resultant matrix is an Odd Matrix”.
+
+9.If all elements are even, print “Resultant matrix is an Even Matrix”. Otherwise, print “Resultant matrix is a Mixed Matrix”.
+
+10.Display the Resultant Matrix.
+
+11.Stop the program. 
   
 
 ## Program:
 ```
 /*
 Program to evaluate the given prefix expression
+import java.util.Scanner;
 
-   int s[50];
-int top=0;
+public class MatrixAddition {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-void push(int ch)
-{
-	top++;
-	s[top]=ch;
+        int rows = sc.nextInt();
+        int cols = sc.nextInt();
+
+        int[][] A = new int[rows][cols];
+        int[][] B = new int[rows][cols];
+        int[][] result = new int[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                A[i][j] = sc.nextInt();
+            }
+        }
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                B[i][j] = sc.nextInt();
+            }
+        }
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result[i][j] = A[i][j] + B[i][j];
+            }
+        }
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(result[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+       
+    }
 }
 
-int pop()
-{
-	int ch;
-	ch=s[top];
-	top=top-1;
-	return(ch);
-}
-
-void evalprefix(char p[50])
-{ int a,b,c,i;
-    for(i=strlen(p)-1;i>=0;i--)
-	{
-		
-		if(p[i]=='+')
-		{
-		a=pop();
-		b=pop();
-		c=a+b;
-		push(c);
-		}
-		else if(p[i]=='*')
-		{
-		a=pop();
-		b=pop();
-		c=a*b;
-		push(c);
-		}
-	   else
-		{
-			push(p[i]-48);
-		}
-			
-	}
-	printf("%d",pop());
 }
 Developed by: SANDHIYA SREE B
 RegisterNumber: 212223220093 
@@ -75,7 +77,8 @@ RegisterNumber: 212223220093
 
 ## Output:
 
-<img width="1158" height="299" alt="image" src="https://github.com/user-attachments/assets/1cb667e9-e6e0-45a5-beee-7cc7f5291d5c" />
+<img width="521" height="776" alt="image" src="https://github.com/user-attachments/assets/052842d5-161f-4825-9644-4e8486ba864e" />
+
 
 
 ## Result:
